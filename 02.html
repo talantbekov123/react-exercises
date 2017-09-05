@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>thenewboston</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="content"> </div>
+    
+    <script type="text/jsx">        
+        var Comment = React.createClass({
+            edit: function() {
+                alert('Editing component');
+            },
+            remove: function() {
+                alert('Removing component');
+            },
+            render: function() {
+                return (
+                    <div>
+                        <h1> {this.props.children} </h1>
+                        <button onClick={this.edit}> Edit </button>
+                        <button onClick={this.remove}> Delete </button>
+                    </div>
+                );
+            }
+        })
+
+        React.render(
+            <div>
+                <Comment> Some data </Comment>
+                <Comment> Another data </Comment>
+            </div>
+                ,
+            document.getElementById('content')
+        );
+    </script>
+
+
+</body>
+</html>
