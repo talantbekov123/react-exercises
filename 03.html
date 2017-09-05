@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>thenewboston</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="component"> </div>
+
+    <script type="text/jsx">
+        var Note = React.createClass({
+            
+            getInitialState: function(){
+                return {editing: false}
+            },
+
+            edit: function() {
+                this.setState({editing: true})
+            },
+
+            delete: function() {
+                console.log('Remove the content')
+            },
+
+            save: function() {
+                this.setState({editing: false})
+            },
+
+            renderNormal: function() {
+                return(
+                    <div>
+                        <h1> {this.props.children} </h1>
+                        <button onClick={this.edit}> Edit </button>
+                        <button onClick={this.delete}> Delete </button>
+                    </div>
+                );
+            },
+
+            renderForm: function() {
+                return(
+                    <div>
+                        <form> 
+                            <input type="text" placeholder={this.props.children}> </input>
+                        </form>
+                        <button onClick={this.save}> Save </button>
+                    </div>
+                );
+            },
+
+            render: function() {
+                if(this.state.editing) {
+                    return this.renderForm();
+                } else {
+                    return this.renderNormal();
+                }
+            }
+        }); 
+
+
+        React.render(
+            <div>
+                <Note> Some data </Note>
+                <Note> Another data </Note>
+            </div>,document.getElementById('component')
+        );
+    </script>
+
+</body>
+</html>
