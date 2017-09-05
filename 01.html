@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>thenewboston</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="content"></div>
+
+    <script type="text/jsx">
+    
+        var Movie = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h2>{this.props.title}</h2>
+                        <h4>{this.props.description}</h4>
+                    </div>
+                );
+            }
+        });
+
+
+        React.render(
+            <div>
+                <Movie title="Marvel" description="Some description"/>
+                <Movie title="X-man" description="Another description"/>
+                <Movie title="Iron man" description="Some more description"/>
+            </div>,
+            document.getElementById('content')
+        );
+
+    </script>
+
+</body>
+</html>
