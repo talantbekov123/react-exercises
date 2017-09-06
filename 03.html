@@ -12,6 +12,7 @@
     <div id="component"> </div>
 
     <script type="text/jsx">
+
         var Note = React.createClass({
             
             getInitialState: function(){
@@ -60,12 +61,32 @@
             }
         }); 
 
+        var Board = React.createClass({
+            getInitialState: function() {
+                return {
+                    comments: [
+                        'I like bacon',
+                        'Want to get an ice cream',
+                        'Some oter text'
+                    ]
+                }
+            },
+            render: function() {
+                return (
+                    <div>
+                        {
+                            this.state.comments.map(function(text, i){
+                                <Node> {text} </Node>
+                            })
+                        }
+                    </div>
+                )
+            }
+        })
+
 
         React.render(
-            <div>
-                <Note> Some data </Note>
-                <Note> Another data </Note>
-            </div>,document.getElementById('component')
+            <Board/>,document.getElementById('component')
         );
     </script>
 
